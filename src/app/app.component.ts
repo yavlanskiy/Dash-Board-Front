@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {TestService} from "./test.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Dash-Board-Front';
+
+  testData:Array<any> = []
+
+  constructor(private testService:TestService) {
+    this.testService.getAllTests().subscribe(
+      (response)=>{
+        console.log(response)
+        this.testData = response;
+      }
+    )
+  }
 }
