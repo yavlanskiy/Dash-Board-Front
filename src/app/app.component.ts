@@ -10,12 +10,14 @@ export class AppComponent {
   title = 'Dash-Board-Front';
 
   testData:Array<any> = []
+  displayedColumns: any;
 
   constructor(private testService:TestService) {
     this.testService.getAllTests().subscribe(
       (response)=>{
         console.log(response)
         this.testData = response;
+        this.displayedColumns = ['Подсистема', 'Тест', 'Версия', 'Разработчик'];
       }
     )
   }

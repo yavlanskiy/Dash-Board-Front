@@ -1,20 +1,27 @@
-<div class="container">
-  <table class="table table-border">
-    <thead>
-      <tr>
-        <th>Подсистема</th>
-        <th>Тест</th>
-        <th>Версия</th>
-        <th>Разработчик</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let dt of testData">
-        <td>{{dt.subsystemName}}</td>
-        <td>{{dt.testName}}</td>
-        <td>{{dt.version}}</td>
-        <td>{{dt.dev}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table mat-table [dataSource]="testData"  class="mat-elevation-z8">
+
+  <ng-container matColumnDef="Подсистема">
+    <th mat-header-cell *matHeaderCellDef > Подсистема </th>
+    <td mat-cell *matCellDef="let element"> {{element.subsystemName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Тест">
+    <th mat-header-cell *matHeaderCellDef> Тест </th>
+    <td mat-cell *matCellDef="let element"> {{element.testName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Версия">
+    <th mat-header-cell *matHeaderCellDef> Версия </th>
+    <td mat-cell *matCellDef="let element"> {{element.version}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Разработчик">
+    <th mat-header-cell *matHeaderCellDef> Разработчик </th>
+    <td mat-cell *matCellDef="let element"> {{element.dev}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
