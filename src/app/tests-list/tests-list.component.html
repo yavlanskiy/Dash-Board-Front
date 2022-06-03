@@ -1,0 +1,43 @@
+<mat-form-field appearance="fill">
+  <mat-label>Проект</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let project of projects" [value]="project.value">
+      {{project.viewValue}}
+    </mat-option>
+  </mat-select>
+
+</mat-form-field>
+
+<table mat-table [dataSource]="testData"  class="mat-elevation-z8">
+
+  <ng-container matColumnDef="Подсистема">
+    <th mat-header-cell *matHeaderCellDef > Подсистема </th>
+    <td mat-cell *matCellDef="let element"> {{element.subsystemName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Тест">
+    <th mat-header-cell *matHeaderCellDef> Тест </th>
+    <td mat-cell *matCellDef="let element"> {{element.testName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Версия">
+    <th mat-header-cell *matHeaderCellDef> Версия </th>
+    <td mat-cell *matCellDef="let element"> {{element.version}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Разработчик">
+    <th mat-header-cell *matHeaderCellDef> Разработчик </th>
+    <td mat-cell *matCellDef="let element"> {{element.dev}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+<mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+  <mat-progress-spinner
+    color="primary"
+    mode="indeterminate">
+  </mat-progress-spinner>
+</mat-card>
