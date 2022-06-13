@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {TestService} from "../test.service";
-import {delay, of} from "rxjs";
 
 @Component({
   selector: 'app-tests-list',
@@ -10,18 +9,23 @@ import {delay, of} from "rxjs";
 export class TestsListComponent implements OnInit {
 
   testData:Array<any> = []
+  projectList:Array<any> = []
+
   displayedColumns: any;
-  projects: Project[] = [
-    {value: '0', viewValue: 'B2_UA'},
-    {value: '1', viewValue: 'B2_UZ'},
-    {value: '2', viewValue: 'B2ng_UA'},
+
+  developer: string [] = [
+   'Rowan','AVB','BAA'
   ];
+
+  version: string[] = [
+    '4800','4700'
+  ];
+
   isLoading = true;
 
   constructor(private testService:TestService) {
     this.testService.getAllTests().subscribe(
       (response)=>{
-        console.log(response)
         this.testData = response;
         this.displayedColumns = ['Подсистема', 'Тест', 'Версия', 'Разработчик'];
         this.isLoading = false
@@ -30,10 +34,14 @@ export class TestsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllProject()
+  }
+
+  getAllProject(){
+    this.testService.getAllProject().subscribe((reponse)=>{
+      this.projectList = reponse;
+    })
   }
 }
 
-interface Project {
-  value: string;
-  viewValue: string;
-}
+
