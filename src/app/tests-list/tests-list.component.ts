@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TestService} from "../test.service";
+import {Project,TestService} from "../test.service";
 
 @Component({
   selector: 'app-tests-list',
@@ -9,7 +9,7 @@ import {TestService} from "../test.service";
 export class TestsListComponent implements OnInit {
 
   testData:Array<any> = []
-  projectList:Array<any> = []
+  projectList:Project[] = []
 
   displayedColumns: any;
 
@@ -38,7 +38,7 @@ export class TestsListComponent implements OnInit {
   }
 
   getAllProject(){
-    this.testService.getAllProject().subscribe((reponse)=>{
+    this.testService.getAllProject().subscribe((reponse) => {
       this.projectList = reponse;
     })
   }
