@@ -20,7 +20,7 @@ export class TestsListComponent implements OnInit {
   isLoading = true;
 
   constructor(private testService:TestService) {
-    this.displayedColumns = ['Подсистема', 'Тест', 'Версия', 'Разработчик'];
+    this.displayedColumns = ['Подсистема', 'Тест', 'Разработчик'];
   }
 
   ngOnInit(): void {
@@ -41,8 +41,9 @@ export class TestsListComponent implements OnInit {
   }
 
   fetchTests() {
+    this.isLoading = true
+    this.testData = []
     this.testService.getAllTests(this.selectedVersion, this.selectedProject).subscribe((response) => {
-      this.testData = []
       this.testData = response;
       this.isLoading = false
     })
