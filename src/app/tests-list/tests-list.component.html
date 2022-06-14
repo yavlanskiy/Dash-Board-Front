@@ -1,31 +1,22 @@
 <mat-form-field appearance="fill">
   <mat-label>Проект</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let project of projectList" [value]="project.name">
+  <mat-select [(ngModel)]="selectedProject">
+    <mat-option *ngFor="let project of projectList" [value]="project.id">
       {{project.name}}
     </mat-option>
   </mat-select>
 </mat-form-field>
 
 <mat-form-field appearance="fill">
-  <mat-label>Разработчик</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let dev of developer" [value]="developer">
-      {{dev}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-
-<mat-form-field appearance="fill">
   <mat-label>Версия</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let ver of version" [value]="version">
-      {{ver}}
+  <mat-select [(ngModel)]="selectedVersion">
+    <mat-option *ngFor="let ver of projectVersion" [value]="ver.versionID">
+      {{ver.version}}
     </mat-option>
   </mat-select>
 </mat-form-field>
 
-<button mat-raised-button color="primary">Применить</button>
+<button mat-raised-button color="primary" (click)="fetchTests()">Применить</button>
 
 
 <table mat-table [dataSource]="testData"  class="mat-elevation-z8">

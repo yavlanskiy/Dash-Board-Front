@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Project,TestService} from "../test.service";
+import {Project, TestService, VersionList} from "../test.service";
 
 @Component({
   selector: 'app-tests-list',
@@ -8,38 +8,43 @@ import {Project,TestService} from "../test.service";
 })
 export class TestsListComponent implements OnInit {
 
+  selectedProject = '';
+  selectedVersion = 0;
+
   testData:Array<any> = []
   projectList:Project[] = []
+  projectVersion:VersionList[] = []
 
   displayedColumns: any;
-
-  developer: string [] = [
-   'Rowan','AVB','BAA'
-  ];
-
-  version: string[] = [
-    '4800','4700'
-  ];
 
   isLoading = true;
 
   constructor(private testService:TestService) {
-    this.testService.getAllTests().subscribe(
-      (response)=>{
-        this.testData = response;
-        this.displayedColumns = ['Подсистема', 'Тест', 'Версия', 'Разработчик'];
-        this.isLoading = false
-      }
-    )
+    this.displayedColumns = ['Подсистема', 'Тест', 'Версия', 'Разработчик'];
   }
 
   ngOnInit(): void {
     this.getAllProject()
+    this.getAllVersion()
   }
 
   getAllProject(){
     this.testService.getAllProject().subscribe((reponse) => {
       this.projectList = reponse;
+    })
+  }
+
+  getAllVersion(){
+    this.testService.getAllVersion().subscribe((reponse) => {
+      this.projectVersion = reponse;
+    })
+  }
+
+  fetchTests() {
+    this.testService.getAllTests(this.selectedVersion, this.selectedProject).subscribe((response) => {
+      this.testData = []
+      this.testData = response;
+      this.isLoading = false
     })
   }
 }

@@ -7,18 +7,29 @@ export interface Project {
   name: string;
 }
 
+export interface VersionList {
+  version:number;
+  versionID:number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class TestService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
 
-  getAllTests():Observable<any> {
-    return this.http.get("http://localhost:8090/test/allTest")
+  }
+  //http://localhost:8090/test/allTest?projectid=3&versionid=182
+  getAllTests(versionID:number, projectID:string):Observable<any> {
+    return this.http.get(`http://localhost:8090/test/allTest?projectid=${projectID}&versionid=${versionID}`)
   }
 
   getAllProject():Observable<Project[]> {
-    return this.http.get<Project[]>("  http://localhost:8090/project/allProject")
+    return this.http.get<Project[]>("http://localhost:8090/project/allProject")
+  }
+
+  getAllVersion():Observable<VersionList[]> {
+    return this.http.get<VersionList[]>("http://localhost:8090/version/allVersion")
   }
 }

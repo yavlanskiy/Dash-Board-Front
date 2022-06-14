@@ -15,6 +15,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatCardModule} from "@angular/material/card";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -22,20 +23,21 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     ToolbarComponent,
     TestsListComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatTableModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatCardModule,
-    MatProgressSpinnerModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatTableModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatCardModule,
+        MatProgressSpinnerModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
