@@ -18,7 +18,6 @@
 
 <button mat-raised-button color="primary" (click)="fetchTests()">Применить</button>
 
-
 <!--<table mat-table [dataSource]="testData"  class="mat-elevation-z8">-->
 
 <!--  <ng-container matColumnDef="Подсистема">-->
@@ -36,16 +35,26 @@
 
 <!--</table>-->
 
+<!--<div *ngFor="let date of testData">-->
+<!--  <h2 >{{date.subsystemName}}</h2>-->
+<!--  <ul>-->
+<!--    <li *ngFor="let item of date.data">{{item.testName}}</li>-->
+<!--  </ul>-->
+<!--</div>-->
+
 <div *ngFor="let date of testData">
-  <h2 >{{date.subsystemName}}</h2>
-  <ul>
-    <li *ngFor="let item of date.data">{{item.testName}}</li>
-  </ul>
+  <h2> {{date.subsystemName}} </h2>
+  <mat-list>
+    <mat-list-item *ngFor="let item of date.data"> {{item.testName}} </mat-list-item>
+  </mat-list>
+</div>
+
+<div *ngIf="isLoading">
+  <h2>Сделайте свой выбор...</h2>
 </div>
 
 <mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
-  <mat-progress-spinner
-    color="primary"
-    mode="indeterminate">
-  </mat-progress-spinner>
+  <mat-progress-bar mode="buffer"></mat-progress-bar>
 </mat-card>
+
+<app-scroll-to-top></app-scroll-to-top>

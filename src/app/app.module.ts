@@ -16,28 +16,36 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatCardModule} from "@angular/material/card";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {FormsModule} from "@angular/forms";
+import {MatListModule} from "@angular/material/list";
+import {MatTreeModule} from "@angular/material/tree";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    TestsListComponent
+    TestsListComponent,
+    ScrollToTopComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatTableModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatCardModule,
-        MatProgressSpinnerModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    FormsModule,
+    MatListModule,
+    MatTreeModule,
+    MatProgressBarModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

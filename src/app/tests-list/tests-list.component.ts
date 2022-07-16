@@ -25,6 +25,7 @@ export class TestsListComponent implements OnInit {
 
   isLoading = true;
 
+
   constructor(private testService:TestService) {
     this.displayedColumns = ['Подсистема', 'Разработчик'];
   }
@@ -62,7 +63,7 @@ export class TestsListComponent implements OnInit {
       }, {})
 
       this.testData = Object.keys(itemsObject).map(k => ({subsystemName: k, data: itemsObject[k]}));
-      console.log(this.testData)
+      //console.log(this.testData)
       this.isLoading = false
     })
   }
