@@ -16,7 +16,7 @@
   </mat-select>
 </mat-form-field>
 
-<button mat-raised-button color="primary" (click)="fetchTests()">Применить</button>
+<button mat-raised-button color="primary" (click)="fetchSubsustem()">Применить</button>
 
 <!--<table mat-table [dataSource]="testData"  class="mat-elevation-z8">-->
 
@@ -42,11 +42,17 @@
 <!--  </ul>-->
 <!--</div>-->
 
-<div *ngFor="let date of testData">
-  <h2> {{date.subsystemName}} </h2>
-  <mat-list>
-    <mat-list-item *ngFor="let item of date.data"> {{item.testName}} </mat-list-item>
-  </mat-list>
+<!--<div *ngFor="let date of testData">-->
+<!--  <h2> {{date.subsystemName}} </h2>-->
+<!--  <mat-list>-->
+<!--    <mat-list-item *ngFor="let item of date.data"> {{item.testName}} </mat-list-item>-->
+<!--  </mat-list>-->
+<!--</div>-->
+<div *ngFor="let date of dataSubsustem">
+  <h2> {{date.name}} </h2>
+<!--  <mat-list>-->
+<!--    <mat-list-item *ngFor="let item of date.data"> {{item.testName}} </mat-list-item>-->
+<!--  </mat-list>-->
 </div>
 
 <div *ngIf="isLoading">

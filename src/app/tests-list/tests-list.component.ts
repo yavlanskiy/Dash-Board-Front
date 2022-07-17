@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Project, TestService, VersionList} from "../test.service";
+import {Project, SubSystem, TestService, VersionList} from "../test.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 
 export interface PeriodicElement {
@@ -18,6 +18,7 @@ export class TestsListComponent implements OnInit {
   selectedVersion = 0;
 
   testData:Array<any> = []
+  dataSubsustem:Array<SubSystem> = []
   projectList:Project[] = []
   projectVersion:VersionList[] = []
 
@@ -66,6 +67,16 @@ export class TestsListComponent implements OnInit {
       //console.log(this.testData)
       this.isLoading = false
     })
+  }
+  fetchSubsustem() {
+    this.isLoading = true
+    this.dataSubsustem = []
+
+    this.testService.getAllSubsustem(this.selectedProject).subscribe((response) => {
+      this.dataSubsustem = response;
+    });
+    console.log(this.dataSubsustem)
+    this.isLoading = false
   }
 }
 
