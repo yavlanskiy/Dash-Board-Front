@@ -15,7 +15,7 @@ export interface VersionList {
 export interface SubSystem {
   id:number;
   name:string;
-  devid:number;
+  dev:string;
 }
 
 @Injectable({
