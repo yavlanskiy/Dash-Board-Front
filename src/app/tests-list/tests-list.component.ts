@@ -19,7 +19,7 @@ export class TestsListComponent implements OnInit {
   selectedVersion = 0;
 
   testData:Array<any> = []
-  dataSubsustem:Array<SubSystem> = []
+  //dataSubsustem:Array<SubSystem> = []
   projectList:Project[] = []
   projectVersion:VersionList[] = []
 
@@ -42,7 +42,8 @@ export class TestsListComponent implements OnInit {
 
   getAllProject(){
     this.testService.getAllProject().subscribe((reponse) => {
-      this.projectList = reponse;
+      let values = [5,6,7,11]; //исключаем ненужные проекты
+      this.projectList = reponse.filter(item => !values.includes(item.id));;
     })
   }
 
@@ -72,16 +73,17 @@ export class TestsListComponent implements OnInit {
       this.isLoading = false
     })
   }
-  fetchSubsustem() {
-    this.isLoading = true
-    this.dataSubsustem = []
 
-    this.testService.getAllSubsustem(this.selectedProject).subscribe((response) => {
-      this.dataSubsustem = response;
-    });
-    console.log(this.dataSubsustem)
-    this.isLoading = false
-  }
+  // fetchSubsustem() {
+  //   this.isLoading = true
+  //   this.dataSubsustem = []
+  //
+  //   this.testService.getAllSubsustem(this.selectedProject).subscribe((response) => {
+  //     this.dataSubsustem = response;
+  //   });
+  //   console.log(this.dataSubsustem)
+  //   this.isLoading = false
+  // }
 }
 
 
