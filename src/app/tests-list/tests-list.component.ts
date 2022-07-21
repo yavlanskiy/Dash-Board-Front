@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Project, SubSystem, TestService, VersionList} from "../test.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import { MatAccordion } from '@angular/material/expansion';
 
 export interface PeriodicElement {
   name: string;
@@ -26,6 +27,9 @@ export class TestsListComponent implements OnInit {
 
   isLoading = true;
 
+  panelOpenState = false;
+
+  @ViewChild('firstAccordion') firstAccordion: MatAccordion;
 
   constructor(private testService:TestService) {
     this.displayedColumns = ['Подсистема', 'Разработчик'];
@@ -64,7 +68,7 @@ export class TestsListComponent implements OnInit {
       }, {})
 
       this.testData = Object.keys(itemsObject).map(k => ({subsystemName: k, data: itemsObject[k]}));
-      //console.log(this.testData)
+      console.log(this.testData)
       this.isLoading = false
     })
   }
