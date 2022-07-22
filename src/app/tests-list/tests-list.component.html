@@ -34,17 +34,34 @@
 
 <mat-accordion #firstAccordion="matAccordion" multi="true">
   <mat-expansion-panel *ngFor="let date of testData">
-    <mat-expansion-panel-header class="example-headers-align">
+    <mat-expansion-panel-header class="example-headers-align"
+                                [collapsedHeight]="customCollapsedHeight"
+                                [expandedHeight]="customExpandedHeight">
       <mat-panel-title>
         {{date.subsystemName}}
       </mat-panel-title>
       <mat-panel-description>
         {{date.data[0].dev}}
       </mat-panel-description>
+      <mat-panel-description>
+        {{date.data[0].autouser}}
+      </mat-panel-description>
     </mat-expansion-panel-header>
-    <p *ngFor="let test of date.data">
-      <span matBadge="{{test.priority}}" matBadgeOverlap="false"><i>{{test.testName}}</i></span>
-    </p>
+
+    <table matSort>
+      <tr>
+        <th mat-sort-header="name">Тест</th>
+        <th mat-sort-header="calories">Приоритет</th>
+      </tr>
+      <tr *ngFor="let test of date.data">
+        <td>{{test.testName}}</td>
+        <td>{{test.priority}}</td>
+      </tr>
+    </table>
+
+<!--    <p *ngFor="let test of date.data">-->
+<!--      <span matBadge="{{test.priority}}" matBadgeOverlap="false"><i>{{test.testName}}</i></span>-->
+<!--    </p>-->
 <!--    <p *ngFor="let test of date.data"><i>{{test.testName}}</i></p>-->
   </mat-expansion-panel>
 </mat-accordion>

@@ -15,6 +15,9 @@ export interface PeriodicElement {
   styleUrls: ['./tests-list.component.css']
 })
 export class TestsListComponent implements OnInit {
+  customCollapsedHeight: string = '30px';
+  customExpandedHeight: string = '30px';
+
 
   selectedProject = '';
   selectedVersion = 0;
