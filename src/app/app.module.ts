@@ -21,6 +21,7 @@ import {MatTreeModule} from "@angular/material/tree";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import {MatBadgeModule} from "@angular/material/badge";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {MatExpansionModule} from "@angular/material/expansion";
     MatListModule,
     MatTreeModule,
     MatProgressBarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
