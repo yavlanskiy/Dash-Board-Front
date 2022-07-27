@@ -17,9 +17,9 @@
     </mat-select>
   </mat-form-field>
 
-  <button mat-raised-button color="primary" (click)="fetchTests()">Применить</button>
-  <button mat-stroked-button color="primary" [disabled]="isLoading" (click)="firstAccordion.openAll()">Expand All</button>
-  <button mat-stroked-button color="primary" [disabled]="isLoading" (click)="firstAccordion.closeAll()">Collapse All</button>
+  <button class="buttonMenu" mat-raised-button color="primary" [disabled]="selectedProject === ''" (click)="fetchTests()">Применить</button>
+  <button class="buttonMenu" mat-stroked-button color="primary" [disabled]="isLoading" (click)="firstAccordion.openAll()">Expand All</button>
+  <button class="buttonMenu" mat-stroked-button color="primary" [disabled]="isLoading" (click)="firstAccordion.closeAll()">Collapse All</button>
 </div>
 
 
@@ -52,10 +52,18 @@
       <tr>
         <th mat-sort-header="name">Тест</th>
         <th mat-sort-header="calories">Приоритет</th>
+        <th mat-sort-header="calories">Путь к TC</th>
       </tr>
       <tr *ngFor="let test of date.data">
-        <td>{{test.testName}}</td>
-        <td>{{test.priority}}</td>
+        <td [style.width]="'600px'">{{test.testName}}</td>
+        <td [style.width]="'200px'">{{test.priority}}</td>
+        <td [style.width]="'200px'">
+          <button class="link"
+                    [cdkCopyToClipboard]="test.tcPath"
+                    [disabled]="test.tcPath === null"
+                    >Copy Link
+          </button>
+        </td>
       </tr>
     </table>
 
