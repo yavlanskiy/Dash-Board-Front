@@ -17,7 +17,7 @@
     </mat-select>
   </mat-form-field>
 
-  <button class="buttonMenu" mat-raised-button color="primary" [disabled]="selectedProject === ''" (click)="fetchTests()">Применить</button>
+  <button class="buttonMenu" mat-raised-button color="primary" [disabled]="selectedProject === ''|| selectedVersion === 0" (click)="fetchTests()">Применить</button>
   <button class="buttonMenu" mat-stroked-button color="primary" [disabled]="isLoading" (click)="firstAccordion.openAll()">Expand All</button>
   <button class="buttonMenu" mat-stroked-button color="primary" [disabled]="isLoading" (click)="firstAccordion.closeAll()">Collapse All</button>
 </div>
