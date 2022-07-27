@@ -74,10 +74,6 @@
   </mat-expansion-panel>
 </mat-accordion>
 
-<div *ngIf="isLoading">
-  <h2>Сделайте свой выбор...</h2>
-</div>
-
 <mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
   <mat-progress-bar mode="buffer"></mat-progress-bar>
 </mat-card>
