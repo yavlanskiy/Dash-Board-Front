@@ -22,16 +22,6 @@
   <button class="buttonMenu" mat-stroked-button color="primary" [disabled]="isLoading" (click)="firstAccordion.closeAll()">Collapse All</button>
 </div>
 
-
-
-<!--рабочая-->
-<!--<div *ngFor="let date of testData">-->
-<!--  <h2 >{{date.subsystemName}}</h2>-->
-<!--  <ul>-->
-<!--    <li *ngFor="let item of date.data">{{item.testName}}</li>-->
-<!--  </ul>-->
-<!--</div>-->
-
 <mat-accordion #firstAccordion="matAccordion" multi="true">
   <mat-expansion-panel *ngFor="let date of testData">
     <mat-expansion-panel-header class="example-headers-align"
