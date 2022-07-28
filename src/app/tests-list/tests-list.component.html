@@ -41,26 +41,21 @@
     <table matSort>
       <tr>
         <th mat-sort-header="name">Тест</th>
-        <th mat-sort-header="calories">Приоритет</th>
-        <th mat-sort-header="calories">Путь к TC</th>
+        <th mat-sort-header="priority">Приоритет</th>
+        <th mat-sort-header="path">Путь к TК</th>
       </tr>
       <tr *ngFor="let test of date.data">
         <td [style.width]="'600px'">{{test.testName}}</td>
         <td [style.width]="'200px'">{{test.priority}}</td>
         <td [style.width]="'200px'">
           <button class="link"
-                    [cdkCopyToClipboard]="test.tcPath"
+                    [cdkCopyToClipboard]="'https://svn/SVN/Docum/B2/QA/TestCases/' + test.tcPath"
                     [disabled]="test.tcPath === null"
                     >Copy Link
           </button>
         </td>
       </tr>
     </table>
-
-<!--    <p *ngFor="let test of date.data">-->
-<!--      <span matBadge="{{test.priority}}" matBadgeOverlap="false"><i>{{test.testName}}</i></span>-->
-<!--    </p>-->
-<!--    <p *ngFor="let test of date.data"><i>{{test.testName}}</i></p>-->
   </mat-expansion-panel>
 </mat-accordion>
 
