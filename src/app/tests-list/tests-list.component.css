@@ -29,3 +29,7 @@ mat-cell, .mat-cell {
 tr:nth-child(even) {
   background-color: #dfe1ea;
 }
+
+th{
+  text-align: left;
+}

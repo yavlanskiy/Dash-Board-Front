@@ -38,11 +38,11 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <table matSort>
+    <table class="tableTestData">
       <tr>
-        <th mat-sort-header="name">Тест</th>
-        <th mat-sort-header="priority">Приоритет</th>
-        <th mat-sort-header="path">Путь к TК</th>
+        <th>Тест</th>
+        <th>Приоритет</th>
+        <th>Путь к TК</th>
       </tr>
       <tr *ngFor="let test of date.data">
         <td [style.width]="'600px'">{{test.testName}}</td>
