@@ -1,5 +1,14 @@
 <div>
   <mat-form-field appearance="fill">
+    <mat-label>Продукт</mat-label>
+    <mat-select  [(ngModel)]="selectedProdukt" (ngModelChange)="getAllVersion($event)">
+      <mat-option *ngFor="let produkt of produkts" [value]="produkt.id">
+        {{produkt.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
     <mat-label>Проект</mat-label>
     <mat-select  [(ngModel)]="selectedProject">
       <mat-option *ngFor="let project of projectList" [value]="project.id">
@@ -11,7 +20,7 @@
   <mat-form-field appearance="fill">
     <mat-label>Версия</mat-label>
     <mat-select [(ngModel)]="selectedVersion">
-      <mat-option *ngFor="let ver of projectVersion" [value]="ver.versionID">
+      <mat-option *ngFor="let ver of projectVersion" [value]="ver.id">
         {{ver.version}}
       </mat-option>
     </mat-select>
