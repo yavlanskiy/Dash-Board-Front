@@ -16,7 +16,7 @@ export  interface Produkt {
 
 export interface VersionList {
   version:string;
-  id:number;
+  versionID:number;
 }
 
 export interface SubSystem {

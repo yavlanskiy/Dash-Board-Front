@@ -20,13 +20,13 @@
   <mat-form-field appearance="fill">
     <mat-label>Версия</mat-label>
     <mat-select [(ngModel)]="selectedVersion">
-      <mat-option *ngFor="let ver of projectVersion" [value]="ver.id">
+      <mat-option *ngFor="let ver of projectVersion" [value]="ver.versionID">
         {{ver.version}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
-  <button class="buttonMenu" mat-raised-button color="primary" [disabled]="selectedProject === ''|| selectedVersion === 0" (click)="fetchTests()">Применить</button>
+  <button class="buttonMenu" mat-raised-button color="primary" [disabled]="selectedProject === '' || selectedVersion === 0" (click)="fetchTests()">Применить</button>
   <button class="buttonMenu" mat-stroked-button color="primary" [disabled]="isLoading" (click)="firstAccordion.openAll()">Expand All</button>
   <button class="buttonMenu" mat-stroked-button color="primary" [disabled]="isLoading" (click)="firstAccordion.closeAll()">Collapse All</button>
 </div>
