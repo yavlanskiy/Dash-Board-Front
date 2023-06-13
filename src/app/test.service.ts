@@ -7,8 +7,15 @@ export interface Project {
   name: string;
 }
 
+export  interface Produkt {
+  id: number,
+  name: string,
+  dbaName: string,
+  bttProdId: number
+}
+
 export interface VersionList {
-  version:number;
+  version:string;
   versionID:number;
 }
 
@@ -35,11 +42,15 @@ export class TestService {
     return this.http.get<SubSystem[]>(`http://localhost:8090/subsystem/allSubsystem?projectid=${projectID}`)
   }
 
-  getAllProject():Observable<Project[]> {
-    return this.http.get<Project[]>("http://localhost:8090/project/allProject")
+  getAllProject(produktId: number):Observable<Project[]> {
+    return this.http.get<Project[]>(`http://localhost:8090/project/getProjects?productId=${produktId}`)
   }
 
-  getAllVersion():Observable<VersionList[]> {
-    return this.http.get<VersionList[]>("http://localhost:8090/version/allVersion")
+  getVersion(produktID:number):Observable<VersionList[]> {
+    return this.http.get<VersionList[]>(`http://localhost:8090/version/version?productId=${produktID}`)
+  }
+
+  getAllProdukt():Observable<Produkt[]> {
+    return this.http.get<Produkt[]>("http://localhost:8090/produkt/allProdukt")
   }
 }

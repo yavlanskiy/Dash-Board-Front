@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Project, SubSystem, TestService, VersionList} from "../test.service";
+import {Produkt, Project, SubSystem, TestService, VersionList} from "../test.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import { MatAccordion } from '@angular/material/expansion';
 import {FormControl, Validators} from "@angular/forms";
@@ -21,11 +21,13 @@ export class TestsListComponent implements OnInit {
 
   selectedProject = '';
   selectedVersion = 0;
+  selectedProdukt = 0;
 
   testData:Array<any> = []
   //dataSubsustem:Array<SubSystem> = []
   projectList:Project[] = []
   projectVersion:VersionList[] = []
+  produkts:Produkt[] = []
 
   displayedColumns: any;
 
@@ -40,20 +42,28 @@ export class TestsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllProject()
-    this.getAllVersion()
+    this.getAllProdukt()
+    //this.getAllProject()
+    //this.getAllVersion()
   }
 
-  getAllProject(){
-    this.testService.getAllProject().subscribe((reponse) => {
-      let values = [5,6,7,11]; //исключаем ненужные проекты
-      this.projectList = reponse.filter(item => !values.includes(item.id));;
+  getAllProject(produktId: number){
+    this.testService.getAllProject(produktId).subscribe((reponse) => {
+      // let values = [5,6,7,11]; //исключаем ненужные проекты
+      // this.projectList = reponse.filter(item => !values.includes(item.id));;
+      this.projectList = reponse;
     })
   }
 
-  getAllVersion(){
-    this.testService.getAllVersion().subscribe((reponse) => {
+  getAllVersion(produktId: number){
+    this.testService.getVersion(produktId).subscribe((reponse) => {
       this.projectVersion = reponse;
+    })
+  }
+
+  getAllProdukt(){
+    this.testService.getAllProdukt().subscribe((reponse) => {
+      this.produkts = reponse;
     })
   }
 
@@ -77,17 +87,6 @@ export class TestsListComponent implements OnInit {
       this.isLoading = false
     })
   }
-
-  // fetchSubsustem() {
-  //   this.isLoading = true
-  //   this.dataSubsustem = []
-  //
-  //   this.testService.getAllSubsustem(this.selectedProject).subscribe((response) => {
-  //     this.dataSubsustem = response;
-  //   });
-  //   console.log(this.dataSubsustem)
-  //   this.isLoading = false
-  // }
 }
 
 

@@ -1,5 +1,14 @@
 <div>
   <mat-form-field appearance="fill">
+    <mat-label>Продукт</mat-label>
+    <mat-select  [(ngModel)]="selectedProdukt" (ngModelChange)="getAllVersion($event); getAllProject($event)">
+      <mat-option *ngFor="let produkt of produkts" [value]="produkt.id">
+        {{produkt.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
     <mat-label>Проект</mat-label>
     <mat-select  [(ngModel)]="selectedProject">
       <mat-option *ngFor="let project of projectList" [value]="project.id">
@@ -17,7 +26,7 @@
     </mat-select>
   </mat-form-field>
 
-  <button class="buttonMenu" mat-raised-button color="primary" [disabled]="selectedProject === ''|| selectedVersion === 0" (click)="fetchTests()">Применить</button>
+  <button class="buttonMenu" mat-raised-button color="primary" [disabled]="selectedProject === '' || selectedVersion === 0" (click)="fetchTests()">Применить</button>
   <button class="buttonMenu" mat-stroked-button color="primary" [disabled]="isLoading" (click)="firstAccordion.openAll()">Expand All</button>
   <button class="buttonMenu" mat-stroked-button color="primary" [disabled]="isLoading" (click)="firstAccordion.closeAll()">Collapse All</button>
 </div>
