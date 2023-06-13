@@ -47,10 +47,11 @@ export class TestsListComponent implements OnInit {
     //this.getAllVersion()
   }
 
-  getAllProject(){
-    this.testService.getAllProject().subscribe((reponse) => {
-      let values = [5,6,7,11]; //исключаем ненужные проекты
-      this.projectList = reponse.filter(item => !values.includes(item.id));;
+  getAllProject(produktId: number){
+    this.testService.getAllProject(produktId).subscribe((reponse) => {
+      // let values = [5,6,7,11]; //исключаем ненужные проекты
+      // this.projectList = reponse.filter(item => !values.includes(item.id));;
+      this.projectList = reponse;
     })
   }
 

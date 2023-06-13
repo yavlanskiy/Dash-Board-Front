@@ -1,7 +1,7 @@
 <div>
   <mat-form-field appearance="fill">
     <mat-label>Продукт</mat-label>
-    <mat-select  [(ngModel)]="selectedProdukt" (ngModelChange)="getAllVersion($event)">
+    <mat-select  [(ngModel)]="selectedProdukt" (ngModelChange)="getAllVersion($event); getAllProject($event)">
       <mat-option *ngFor="let produkt of produkts" [value]="produkt.id">
         {{produkt.name}}
       </mat-option>

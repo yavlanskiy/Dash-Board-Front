@@ -42,8 +42,8 @@ export class TestService {
     return this.http.get<SubSystem[]>(`http://localhost:8090/subsystem/allSubsystem?projectid=${projectID}`)
   }
 
-  getAllProject():Observable<Project[]> {
-    return this.http.get<Project[]>("http://localhost:8090/project/allProject")
+  getAllProject(produktId: number):Observable<Project[]> {
+    return this.http.get<Project[]>(`http://localhost:8090/project/getProjects?productId=${produktId}`)
   }
 
   getVersion(produktID:number):Observable<VersionList[]> {
