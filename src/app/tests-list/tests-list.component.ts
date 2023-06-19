@@ -1,13 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Produkt, Project, SubSystem, TestService, VersionList} from "../test.service";
-import {animate, state, style, transition, trigger} from "@angular/animations";
 import { MatAccordion } from '@angular/material/expansion';
-import {FormControl, Validators} from "@angular/forms";
-
-export interface PeriodicElement {
-  name: string;
-  description: string;
-}
 
 @Component({
   selector: 'app-tests-list',
@@ -32,6 +25,7 @@ export class TestsListComponent implements OnInit {
   displayedColumns: any;
 
   isLoading = true;
+  isLoadingProdukt = false
 
   panelOpenState = false;
 
@@ -62,8 +56,10 @@ export class TestsListComponent implements OnInit {
   }
 
   getAllProdukt(){
+    this.isLoadingProdukt = true;
     this.testService.getAllProdukt().subscribe((reponse) => {
       this.produkts = reponse;
+      this.isLoadingProdukt = false;
     })
   }
 

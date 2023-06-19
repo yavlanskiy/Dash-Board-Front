@@ -1,11 +1,12 @@
 <div>
   <mat-form-field appearance="fill">
     <mat-label>Продукт</mat-label>
-    <mat-select  [(ngModel)]="selectedProdukt" (ngModelChange)="getAllVersion($event); getAllProject($event)">
+    <mat-select [(ngModel)]="selectedProdukt" (ngModelChange)="getAllVersion($event); getAllProject($event)">
       <mat-option *ngFor="let produkt of produkts" [value]="produkt.id">
         {{produkt.name}}
       </mat-option>
     </mat-select>
+    <mat-progress-bar *ngIf="isLoadingProdukt" color="primary" mode="indeterminate" [style.position]="'absolute'"></mat-progress-bar>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
